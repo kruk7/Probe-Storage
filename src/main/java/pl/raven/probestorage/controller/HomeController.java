@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import pl.raven.probestorage.model.Measurement;
 import pl.raven.probestorage.model.Probe;
 import pl.raven.probestorage.repository.MeasurementsRepository;
@@ -48,5 +49,13 @@ public class HomeController {
         HttpStatus httpStatus = HttpStatus.OK;
         return new ResponseEntity<>(measurementsList,httpStatus);
     }
+
+
+    @PostMapping("/api/add-measurement")
+    public ResponseEntity<Measurement> saveMeasurement(@RequestBody Measurement measurement) {
+        Measurement saved = measurementsRepository.save(measurement);
+        return ResponseEntity.ok(saved);
+    }
+
 
 }

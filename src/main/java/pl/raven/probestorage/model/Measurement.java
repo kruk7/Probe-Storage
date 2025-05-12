@@ -1,5 +1,6 @@
 package pl.raven.probestorage.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Measurement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     Integer serialProbe;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     LocalDateTime dateTime;
     Double magnetField;
     Double intTemp;
